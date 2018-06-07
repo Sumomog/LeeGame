@@ -3,6 +3,10 @@ package test;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -277,5 +281,57 @@ class Tests {
 		System.out.println(Integer.toHexString(Mouse2.free((short) 0xF0FF, 8)));
 		System.out.println(Integer.toHexString(Mouse2.free((short) 0xF1FF, 8)));
 		System.out.println(Integer.toHexString(Mouse2.free((short) 0xF2FF, 8)));
+	}
+	
+	@Test
+	void test16() throws SQLException {
+
+		Connection c = DriverManager.getConnection("");
+		
+		// 最初に、XMLデータ型を含む簡単なテーブルを作成します。
+		Statement s = c.createStatement();
+		s.execute("CREATE TABLE ARTICLE(ID INTEGER, DATA XML)");
+
+		// XMLデータの挿入
+//		int id = 0;
+//		PreparedStatement ps = c.prepareStatement("INSERT INTO ARTICLE (ID, DATA) VALUES "
+//				   + "(?, XMLPARSE (DOCUMENT CAST (? AS CLOB) PRESERVE "
+//				   + "WHITESPACE))");
+//				ps.setInt(1, id++);
+//				ps.setClob(2, new StringReader(insert));
+//		
+//		// さて、JDBC 4完全対応ドライバがある場合は、同じ処理をjava.io.Writerで実現できます（この変更を行ってもコードは正常にコンパイルされます）。
+//		ps = c.prepareStatement("INSERT INTO ARTICLE (ID, DATA) values (?, ?)");
+//		SQLXML article = c.createSQLXML();
+//		Writer writer = article.setCharacterStream();
+//		writer.write(insert);
+//		writer.close();
+//		ps.setInt(1, id++);
+//		ps.setSQLXML(2, article);
+//		
+//		// あるいは、javax.xml.transform.dom.DOMSourceを使用する方法もあります。
+//		ps = c.prepareStatement("INSERT INTO ARTICLE (ID, DATA) values (?, ?)");
+//		SQLXML article = c.createSQLXML();
+//		DOMResult dom = (DOMResult)article.setResult(DOMResult.class);
+//		dom.setNode(doc); // doc is instance of org.w3c.dom.Document
+//		ps.setInt(1, id++);
+//		ps.setSQLXML(2, article);
+//		
+//		// XMLデータの取得
+//		ResultSet rs = s.executeQuery("SELECT XMLSERIALIZE (DATA AS CLOB) "
+//                + "FROM ARTICLE WHERE ID = 2");
+//		// java.sql.SQLXMLがサポートされている場合は、XMLデータベース型の列を選択するだけで同じタスクを実現できます。XMLデータを直接取得できるわけです。ここでは、結果セットから取得したXMLをDOMパーサーで評価するものとします。
+//		PreparedStatement st = c.prepareStatement("SELECT ID, DATA FROM ARTICLE");
+//		ResultSet rs = st.executeQuery();
+//
+//		while (rs.next())
+//		{
+//		   SQLXML article = rs.getSQLXML("DATA");
+//		   InputStream stream = article.getBinaryStream();
+//		   DocumentBuilder parser =
+//		   DocumentBuilderFactory.newInstance().newDocumentBuilder();
+//		   Document doc = parser.parse(stream);
+//		   // Do something...
+//		}
 	}
 }

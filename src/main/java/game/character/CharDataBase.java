@@ -3,9 +3,10 @@ package game.character;
 import java.awt.Image;
 
 import game.manager.ImageManager;
+import game.util.Constant;
 import game.util.Util;
 
-public class CharDataBase implements CharData {
+public class CharDataBase implements CharData, Constant {
 	protected Image image;
 	protected int x, y, w, h;
 	protected int frameNum;
@@ -13,7 +14,7 @@ public class CharDataBase implements CharData {
 
 	public CharDataBase(String data) {
 		if (data == null) throw new RuntimeException("キャラクタデータ不正");
-		String line[] = data.split(System.lineSeparator());
+		String line[] = data.replace(CRLF, LF).replace(CR, LF).split(LF);
 		if (line.length < 3) throw new RuntimeException("マップデータ不正");
 		int i = 0;
 		String filename = line[i++];

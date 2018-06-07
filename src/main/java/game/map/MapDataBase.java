@@ -3,15 +3,18 @@ package game.map;
 import java.awt.Image;
 
 import game.manager.ImageManager;
+import game.util.Constant;
 import game.util.Create;
 
-public abstract class MapDataBase<T> implements MapData<T>, Create<T> {
+public abstract class MapDataBase<T> implements MapData<T>, Create<T>, Constant {
 	protected Image image;
 	protected int iw, ih, frameNum;
 	protected int w, h, x, y;
 	protected String[][] data;
 	public MapDataBase(String data) {
-		String line[] = data.split(System.lineSeparator());
+//		String line[] = data.split("¥r¥n");
+//		String line[] = data.split("\r\n");
+		String line[] = data.replace(CRLF, LF).replace(CR, LF).split(LF);
 		if (line.length < 3) {
 			throw new RuntimeException("マップデータ不正");
 		}

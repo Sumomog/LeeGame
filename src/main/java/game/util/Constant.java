@@ -11,4 +11,8 @@ public interface Constant {
 	int PUSH_KEY = 1;
 	int HOLD_KEY = 2;
 	int PULL_KEY = 3;
+
+	String CR = new String(new char[] {0x0D});
+	String LF = new String(new char[] {0x0A});
+	String CRLF = new String(CR+LF);
 }
