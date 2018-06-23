@@ -59,6 +59,8 @@ public enum Mouse implements MouseListener, MouseMotionListener, Constant {
 
 	public static int getX() { return x; }
 	public static int getY() { return y; }
+	public static int getX(int i) { return x/i*i; }
+	public static int getY(int i) { return y/i*i; }
 
 	@Override
 	public void mouseClicked(MouseEvent e){}

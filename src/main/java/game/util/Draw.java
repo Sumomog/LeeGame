@@ -25,4 +25,8 @@ public class Draw {
         g.setColor(c);
         g.fillRect(x, y, w, h);
 	}
+	public static final void rect(int x, int y, int w, int h, Graphics2D g, Color c) {
+        g.setColor(c);
+        g.fillRect(x, y, w, h);
+	}
 }

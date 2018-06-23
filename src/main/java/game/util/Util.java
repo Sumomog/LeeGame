@@ -228,4 +228,17 @@ public class Util {
 //		}
 //		return array;
 //	}
+
+//	public static <T extends Number> T abs(T a) {
+//		return a> ? a : -a;
+//	}
+	public static byte abs(byte a) { return (byte) (a>0 ? a : -a); }
+	public static short abs(short a) { return (short) (a>0 ? a : -a); }
+	public static int abs(int a) { return a>0 ? a : -a; }
+	public static long abs(long a) { return a>0 ? a : -a; }
+
+	public static byte abs(byte a, byte b) { return (byte) (a>b ? a-b : b-a); }
+	public static short abs(short a, short b) { return (short) (a>b ? a-b : b-a); }
+	public static int abs(int a, int b) { return a>b ? a-b : b-a; }
+	public static long abs(long a, long b) { return a>b ? a-b : b-a; }
 }

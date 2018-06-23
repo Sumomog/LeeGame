@@ -21,7 +21,8 @@ public class StepD implements Step, Constant {
 	public Step run(JFrame j) {
 		switch (cnt--) {
 		case 0:
-			return StepManager.getManager().getData("game.step.StepB");
+//			return StepManager.getManager().getData("game.step.StepB");
+			return StepManager.getManager().getData("game.step.StepE");
 		case CNT:
 			repaint(j);
 			break;
