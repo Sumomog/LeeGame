@@ -32,6 +32,8 @@ public class SQLiteDB {
 		System.out.println("Person.id  :"+dtos.get(0).id);
 		System.out.println("Person.name:"+dtos.get(0).name);
 		System.out.println();
+		
+		if(true)return;
 
 		System.out.println(byte.class.getName());
 		System.out.println(short.class.getName());
