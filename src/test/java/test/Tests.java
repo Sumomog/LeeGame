@@ -334,4 +334,17 @@ class Tests {
 //		   // Do something...
 //		}
 	}
+	
+	@Test
+	void test17() throws SQLException {
+		final String BYTE = byte.class.getName();
+		final String SHORT = short.class.getName();
+		final String INT = int.class.getName();
+		final String STRING = String.class.getName();
+
+		System.out.println(BYTE);
+		System.out.println(SHORT);
+		System.out.println(INT);
+		System.out.println(STRING);
+	}
 }

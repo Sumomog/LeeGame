@@ -11,7 +11,7 @@ public class SQLiteTest {
 	static int COUNT = 1;
     private static final String DATA = "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890";
 
-    public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception {
         Class.forName("org.sqlite.JDBC");
         con = DriverManager.getConnection("jdbc:sqlite:test.sqlite3");
         Statement st = con.createStatement();
@@ -20,7 +20,6 @@ public class SQLiteTest {
         executeQuery();
         con.close();
 	}
-
     private static void executeQuery() throws Exception {
         executeQuery(con.getMetaData().getDatabaseProductName());
     }
